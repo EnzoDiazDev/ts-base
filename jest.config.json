@@ -1,0 +1,28 @@
+{
+  "verbose": true,
+  "clearMocks": true,
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "roots": ["<rootDir>/test"],
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "<rootDir>/src/**/*.ts",
+    "!<rootDir>/src/**/types.ts",
+    "!<rootDir>/src/**/*.d.ts",
+    "!<rootDir>/src/**/*.mock.ts",
+    "!<rootDir>/src/**/index.ts"
+  ],
+  "coverageDirectory": "<rootDir>/coverage",
+  "coveragePathIgnorePatterns": ["\\\\node_modules\\\\"],
+  "moduleFileExtensions": ["ts", "tsx", "js"],
+  "modulePathIgnorePatterns": ["<rootDir>/test/utils"],
+  "moduleNameMapper": {
+  },
+  "testPathIgnorePatterns": [".mock.ts$"],
+  "transformIgnorePatterns": ["/node_modules/"],
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "reporters": ["default", "@casualbot/jest-sonar-reporter"],
+  "setupFiles": ["dotenv/config"]
+}

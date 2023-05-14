@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "SonarSource.sonarlint-vscode",
+    "usernamehw.errorlens",
+    "meganrogge.template-string-converter",
+    "GitHub.copilot"
+  ]
+}

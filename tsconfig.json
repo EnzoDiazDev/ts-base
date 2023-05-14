@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "strictPropertyInitialization": false,
+    "emitDeclarationOnly": false,
+    "declarationMap": false,
+    "declaration":false,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "incremental": true,
+    "baseUrl": "./",
+    "outDir": "./dist/",
+    "paths": {
+      "logger": ["./src/logger/Logger"],
+    },
+  },
+  "include": ["./src/"],
+  "exclude": [
+    "node_modules",
+    "test",
+    "dist",
+    "migrations",
+    "jest.config.ts"
+  ]
+}
