@@ -57,7 +57,7 @@ class Logger {
 
     const caller = v8StackTrace
       .filter((e:any) => e.getTypeName() != null && e.getTypeName() !== 'Logger' && e.getTypeName() !== 'global')
-      .map((e:any) => `[${e.getTypeName()}.${e.getFunctionName()}: L${e.getLineNumber()}]`);
+      .map((e:any) => `${e.getTypeName()}.${e.getFunctionName()}: L${e.getLineNumber()}`);
 
     return caller[0];
   }
