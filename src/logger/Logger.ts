@@ -9,7 +9,7 @@ class Logger {
   private static _instance:Logger;
 
   /** Variables del contexto de ejecución */
-  private storage = new AsyncLocalStorage<Record<string, any>>();
+  private readonly storage = new AsyncLocalStorage<Bindings>();
   /** Instancia de `pino` logger. */
   private logger:PinoLogger;
 
@@ -21,13 +21,16 @@ class Logger {
       },
       timestamp: stdTimeFunctions.isoTime,
       mixin: _mergeObject => ({ ...this.storage.getStore() }),
-      mixinMergeStrategy: (_mergeObject, mixinObject) => mixinObject,
       base: {
         env: Environment.ENVIRONMENT,
         project: Environment.PROJECT_NAME,
         version: Environment.VERSION
       }
     });
+  }
+
+  public startContext(bindings:Bindings, cb:() => any):void {
+    this.storage.run(bindings, cb);
   }
 
   /**
@@ -73,6 +76,8 @@ class Logger {
    */
   public setInContext(key:string, value:any):this {
     const store = this.storage.getStore();
+    if(!store) return this;
+
     store[key] = value;
 
     return this;
