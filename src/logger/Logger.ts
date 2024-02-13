@@ -55,7 +55,7 @@ class Logger {
     Error.prepareStackTrace = v8Handler;
     Error.stackTraceLimit = oldLimit;
 
-    const caller = v8StackTrace
+    const caller = (v8StackTrace as any)
       .filter((e:any) => e.getTypeName() != null && e.getTypeName() !== 'Logger' && e.getTypeName() !== 'global')
       .map((e:any) => `${e.getTypeName()}.${e.getFunctionName()}: L${e.getLineNumber()}`);
 
@@ -95,7 +95,7 @@ class Logger {
 
   /**
    * Loggea un mensaje con el nivel `debug`.
-   * Se utiliza para loggear información de diagnóstoco acerca del estado de la aplicación.
+   * Se utiliza para loggear información de diagnóstico acerca del estado de la aplicación.
    * @param message Mensaje a loggear.
    * @param bindings Bindings opcionales.
    */
